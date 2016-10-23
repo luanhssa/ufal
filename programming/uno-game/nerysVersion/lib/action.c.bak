@@ -1,0 +1,53 @@
+#include "lib/principal.h"
+
+#define nextPlayerAction 'n'
+#define puxar2Action '2'
+#define puxar4Action '4'
+#define pegarCorAction 'c'
+#define inverterAction 'i'
+
+struct _event_{
+    char action;
+    Event* next;
+};
+
+struct _queue_{ // Queue
+    Event *first;
+    Event *last;
+};
+
+Queue* createQueueAction(){
+    Queue *newQueue = (Queue*)malloc(sizeof(Queue));
+    newQueue->first = newQueue->last = NULL;
+    return newQueue;
+}
+Event* creatEvent(char action){
+    Event* newEvent = (Event*)malloc(sizeof(Event));
+    newEvent->next = NULL;
+    newEvent->action = action;
+    return newEvent;
+}
+int isEmputy(Queue* queue){
+    return (queue->first==NULL);
+}
+
+void insertEvent(Event* event,Queue* queue){
+    if(queue->last!=NULL){
+        queue->last->next = event;
+    }
+    else {
+        queue->first = event;
+    }
+    queue->last = event;
+}
+
+Event* removeEvent(Queue* queue){
+    Event* event;
+    event = queue->first;
+    queue->first = queue->first->next;
+    event->next = NULL;
+    return event;
+}
+
+
+

@@ -1,0 +1,244 @@
+#include "principal.h"
+
+bool iniciaAllegro(){
+   posMouse = addMouse(0,0);
+
+   FILE *logError = fopen("log/logerror.txt", "w");
+
+   if(!al_init()) {
+      fputs("falha ao inciar allegro!\n", logError);
+      fclose (logError);
+      return false;
+   }
+   if(!al_install_keyboard()) {
+      fputs("falha ao inciar keyboard!\n", logError);
+      fclose (logError);
+      return false;
+   }
+   if(!al_install_mouse()){
+      fputs("falha ao inciar mouse!\n", logError);
+      fclose (logError);
+      return false;
+   }
+   if(!al_install_audio()){
+      fputs("falha ao inciar audio!\n", logError);
+      fclose (logError);
+      return false;
+   }
+   if(!al_init_acodec_addon()){
+      fputs("falha ao inciar audio codecs!\n", logError);
+      fclose (logError);
+      return false;
+   }
+   if (!al_reserve_samples(3)){
+      fputs("falha ao inciar reserve samples!\n", logError);
+      fclose (logError);
+      return false;
+   }
+   al_init_font_addon();   //** Initialize the font addon
+   al_init_ttf_addon();    //** Initialize the ttf (True Type Font) addon
+   fclose (logError);
+
+   return true;
+}
+
+bool iniciaVariable(){
+   /** Frames per Secund */
+   FPS = 30;
+
+   /** Booleans */
+   key[0] = false;
+   key[1] = false;
+   key[2] = false;
+   key[3] = false;
+
+   doexit = false;
+   redraw = true;
+
+   menuMainMenu = true;
+   menuNovoJogo = false;
+   menuHelp = false;
+   menuOpcoes = false;
+   changeColor = false;
+
+   /** Display */
+   display = NULL;
+
+   /** Event */
+   event_queue = NULL;
+   eventsQueue = createQueueAction();
+
+   /** Time */
+   timer = NULL;
+
+   timer = al_create_timer(1.0 / FPS);    ///** Inicializa Timer.
+   if(!timer) {
+      fprintf(stderr, "falha ao criar timer!\n");
+      return false;
+   }
+   al_init_image_addon();     ///** Inicialize Images Addons
+   al_init_primitives_addon();      ///** Inicialize Primitive Addons
+
+   al_get_display_mode(al_get_num_display_modes() - 1, &disp_data);
+   al_set_new_display_flags(ALLEGRO_FULLSCREEN);      ///** Inicialize FULLSCREEN
+   display = al_create_display(disp_data.width, disp_data.height);      ///** Inicialize Display
+   if(!display) {
+      fprintf(stderr, "falha ao criar Display!\n");
+      al_destroy_timer(timer);
+      return false;
+   }
+   displayHeigh = al_get_display_height(display);     ///** Recebe a altura da tela
+   displayWidht = al_get_display_width(display);      ///** Recebe a largura da tela
+
+   int  sizeFontMenu = (displayWidht*0.016),
+        sizeFontTittle = (displayWidht*0.052),
+        sizeFont = (displayWidht*0.016);
+
+   colorMenuSair = al_map_rgb(255, 255, 255);      ///** Define cor Branca (255,255,255) a variavel.
+   font = al_load_ttf_font("font/comic.ttf", sizeFont, 0);      ///** Inicializa fonte do texto no topo.
+   fontMenu = al_load_ttf_font("font/pirulen.ttf", sizeFontMenu, 0);      ///** Inicializa texto do menu.
+   fontTittle = al_load_ttf_font("font/pirulen.ttf", sizeFontTittle, 0);     ///** Inicializa texto do título.
+   fontPlayers = al_load_ttf_font("font/comic.ttf", 16, 0);  ///** Inicializa fonte do texto dos nomes dos personagens.
+   if (!font || !fontMenu || !fontTittle){
+   fprintf(stderr, "Não foi possível carregar a fonte.\n");
+      return false;
+   }
+
+   al_set_target_bitmap(al_get_backbuffer(display));
+
+   event_queue = al_create_event_queue();    ///** Inicialize Event
+   if(!event_queue) {
+      fprintf(stderr, "falha ao criar event_queue!\n");
+      al_destroy_display(display);
+      al_destroy_timer(timer);
+      return -1;
+   }
+   /**
+    *    Registra os eventos do display, tempo, teclado e mouse.
+    */
+   al_register_event_source(event_queue, al_get_display_event_source(display));
+   al_register_event_source(event_queue, al_get_timer_event_source(timer));
+   al_register_event_source(event_queue, al_get_keyboard_event_source());
+   al_register_event_source(event_queue, al_get_mouse_event_source());
+
+   /**
+    *    COLORS
+    */
+   colorBlack = al_map_rgb(0,0,0);
+   colorWhite = al_map_rgb(255,255,255);
+   colorRed = al_map_rgb(255,0,0);
+   colorDarkRed = al_map_rgb(100,0,0);
+   colorLightRed = al_map_rgb(255,0,0);
+   colorYellow = al_map_rgb(255,255,0);
+   colorGray = al_map_rgb(100,100,100);
+
+   /**
+    *    BITMAPS
+    */
+   leoShadow = al_load_bitmap("image/leonildoSombra.png");
+   luanShadow = al_load_bitmap("image/luanSombra.png");
+   neryShadow = al_load_bitmap("image/carlosSombra.png");
+   jorgeShadow = al_load_bitmap("image/jorgeSombra.png");
+   maxShadow = al_load_bitmap("image/maxwellSombra.png");
+   imageLeo = al_load_bitmap("image/leonildo.png");
+   imageLuan = al_load_bitmap("image/luan.png");
+   imageNery = al_load_bitmap("image/carlos.png");
+   imageJorge = al_load_bitmap("image/jorge.png");
+   imageMax = al_load_bitmap("image/maxwell.png");
+   piso = al_load_bitmap("image/piso.png");
+   table = al_load_bitmap("image/mesa.png");
+   imageSentido = al_load_bitmap("image/sentido.png");
+   imageQnt = al_load_bitmap("image/qnt.png");
+   imageBaralho = al_load_bitmap("image/baralho.png");
+   imageBDiscard = al_load_bitmap("image/descarte.png");
+   imageGetCor = al_load_bitmap("image/mudarCor.png");
+
+   cartasImagens = (ALLEGRO_BITMAP**)malloc(55*sizeof(ALLEGRO_BITMAP*));
+   cartasImagens[0] = al_load_bitmap("image/0yellow.png");
+   cartasImagens[1] = al_load_bitmap("image/0blue.png");
+   cartasImagens[2] = al_load_bitmap("image/0green.png");
+   cartasImagens[3] = al_load_bitmap("image/0red.png");
+   cartasImagens[4] = al_load_bitmap("image/1yellow.png");
+   cartasImagens[5] = al_load_bitmap("image/1blue.png");
+   cartasImagens[6] = al_load_bitmap("image/1green.png");
+   cartasImagens[7] = al_load_bitmap("image/1red.png");
+   cartasImagens[8] = al_load_bitmap("image/2yellow.png");
+   cartasImagens[9] = al_load_bitmap("image/2blue.png");
+   cartasImagens[10] = al_load_bitmap("image/2green.png");
+   cartasImagens[11] = al_load_bitmap("image/2red.png");
+   cartasImagens[12] = al_load_bitmap("image/3yellow.png");
+   cartasImagens[13] = al_load_bitmap("image/3blue.png");
+   cartasImagens[14] = al_load_bitmap("image/3green.png");
+   cartasImagens[15] = al_load_bitmap("image/03red.png");
+   cartasImagens[16] = al_load_bitmap("image/4yellow.png");
+   cartasImagens[17] = al_load_bitmap("image/4blue.png");
+   cartasImagens[18] = al_load_bitmap("image/4green.png");
+   cartasImagens[19] = al_load_bitmap("image/4red.png");
+   cartasImagens[20] = al_load_bitmap("image/5yellow.png");
+   cartasImagens[21] = al_load_bitmap("image/5blue.png");
+   cartasImagens[22] = al_load_bitmap("image/5green.png");
+   cartasImagens[23] = al_load_bitmap("image/5red.png");
+   cartasImagens[24] = al_load_bitmap("image/6yellow.png");
+   cartasImagens[25] = al_load_bitmap("image/6blue.png");
+   cartasImagens[26] = al_load_bitmap("image/6green.png");
+   cartasImagens[27] = al_load_bitmap("image/6red.png");
+   cartasImagens[28] = al_load_bitmap("image/7yellow.png");
+   cartasImagens[29] = al_load_bitmap("image/7blue.png");
+   cartasImagens[30] = al_load_bitmap("image/7green.png");
+   cartasImagens[31] = al_load_bitmap("image/7red.png");
+   cartasImagens[32] = al_load_bitmap("image/8yellow.png");
+   cartasImagens[33] = al_load_bitmap("image/8blue.png");
+   cartasImagens[34] = al_load_bitmap("image/8green.png");
+   cartasImagens[35] = al_load_bitmap("image/8red.png");
+   cartasImagens[36] = al_load_bitmap("image/9yellow.png");
+   cartasImagens[37] = al_load_bitmap("image/9blue.png");
+   cartasImagens[38] = al_load_bitmap("image/9green.png");
+   cartasImagens[39] = al_load_bitmap("image/9red.png");
+   cartasImagens[40] = al_load_bitmap("image/reverseyellow.png");
+   cartasImagens[41] = al_load_bitmap("image/reverseblue.png");
+   cartasImagens[42] = al_load_bitmap("image/reversegreen.png");
+   cartasImagens[43] = al_load_bitmap("image/reversered.png");
+   cartasImagens[44] = al_load_bitmap("image/blockyellow.png");
+   cartasImagens[45] = al_load_bitmap("image/blockblue.png");
+   cartasImagens[46] = al_load_bitmap("image/blockgreen.png");
+   cartasImagens[47] = al_load_bitmap("image/blockred.png");
+   cartasImagens[48] = al_load_bitmap("image/+4.png");
+   cartasImagens[49] = al_load_bitmap("image/+2yellow.png");
+   cartasImagens[50] = al_load_bitmap("image/+2blue.png");
+   cartasImagens[51] = al_load_bitmap("image/+2green.png");
+   cartasImagens[52] = al_load_bitmap("image/+2red.png");
+   cartasImagens[53] = al_load_bitmap("image/coringa.png");
+   cartasImagens[54] = al_load_bitmap("image/+4vermelha.png");
+
+
+   /** Inicia o timer */
+   al_clear_to_color(al_map_rgb(0,0,0));
+   al_flip_display();
+   al_start_timer(timer);
+
+   return true;
+}
+
+void destroyVariable(){
+   al_destroy_timer(timer);
+   al_destroy_display(display);
+   al_destroy_event_queue(event_queue);
+
+   al_destroy_font(font);
+   al_destroy_font(fontMenu);
+   al_destroy_font(fontTittle);
+
+   al_destroy_bitmap(leoShadow);
+   al_destroy_bitmap(luanShadow);
+   al_destroy_bitmap(maxShadow);
+   al_destroy_bitmap(neryShadow);
+   al_destroy_bitmap(jorgeShadow);
+   al_destroy_bitmap(imageJorge);
+   al_destroy_bitmap(imageLeo);
+   al_destroy_bitmap(imageLuan);
+   al_destroy_bitmap(imageMax);
+   al_destroy_bitmap(imageNery);
+   al_destroy_bitmap(piso);
+   al_destroy_bitmap(table);
+   al_destroy_bitmap(imageSentido);
+}

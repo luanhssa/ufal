@@ -1,0 +1,107 @@
+#include"principal.h"
+
+struct _mainPack_{
+    Card** pack;
+    int size;
+};
+
+MainPack* createMainPack(){
+    MainPack* newMainPack = (MainPack*)malloc(sizeof(MainPack));
+    newMainPack->size = 0;
+    Card** cards = createPackStack();
+    int i;for(i = 0; i<MAX_STACK_SIZE;i++){
+        if(!pushPack(cards[i], newMainPack)){
+            puts("ERRO AO CARREGAR O BARALHO CHEIO");
+        }
+
+    }
+    return newMainPack;
+}
+
+MainPack* createEmptyPack(){
+    MainPack* newMainPack = (MainPack*)malloc(sizeof(MainPack));
+    newMainPack->size = 0;
+    newMainPack->pack = (Card**)malloc(MAX_STACK_SIZE*sizeof(Card*));
+    return newMainPack;
+}
+
+Card** createPackStack(){
+    Card** pack = (Card**)malloc(MAX_STACK_SIZE*sizeof(Card*));
+    int i=0;
+    char ch1, ch2;
+    int id;
+    int qntcartas = MAX_STACK_SIZE;
+
+    FILE* cartasTXT = fopen("text/cartas.txt", "r");
+    if(cartasTXT != NULL){
+        fscanf(cartasTXT,"%c %c %d\n", &ch1, &ch2, &id);
+        pack[i] = createCard(ch1, ch2, id);
+        while(!feof(cartasTXT)){
+            i++;
+            fscanf(cartasTXT,"%c %c %d\n", &ch1, &ch2, &id);
+            pack[i] = createCard(ch1, ch2, id);
+        }
+        fclose(cartasTXT);
+    }else{
+        puts("Arquivo (cartas.txt) nao carregado!");
+    }
+
+/// É feito o embaralhamento das cartas dentro do array auxiliar
+    pack = shufleCards(pack, qntcartas);
+
+/**** ----------- IMPRIME AS CARTAS DO ARRAY ----------- **
+    for(i=0;i<108;i++){
+        printf("%2.d - cor:%c simbolo:%c\n", i+1, peekColor(pack[i]), peekSymbol(pack[i]));
+    }
+**/
+    return pack;
+}
+
+Card** shufleCards(Card** cards, int qntcartas){
+    register int i, j;
+    for (i=0; i<qntcartas; i++) {
+        j = rand() % qntcartas;
+        srand(rand()*time(NULL));
+        if (j!=i) {
+            Card* temp = cards[i];
+            cards[i] = cards[j];
+            cards[j] = temp;
+        }
+    }
+    return cards;
+}
+
+Card* popPack(MainPack* pack){
+    if(pack->size == 0){
+        return NULL;
+    }else{
+        return pack->pack[--pack->size];
+    }
+}
+
+int pushPack(Card* newCard, MainPack* pack){
+    if(pack->size == MAX_STACK_SIZE){
+        printf("BARALHO CHEIO!\n");
+        return 0;
+    }
+    else{
+        pack->pack[pack->size++] = newCard;
+        return 1;
+    }
+}
+
+void pushMainPack(MainPack* pack, MainPack* descarte){
+    int i = getSizePack(descarte);
+    for(;i>0; i--) {
+        pushPack(popPack(descarte), pack);
+    }
+    pack->pack = shufleCards(getPack(pack), getSizePack(pack));
+}
+
+int getSizePack(MainPack* pack) {
+    return pack->size;
+}
+
+Card** getPack(MainPack* pack){
+    return pack->pack;
+}

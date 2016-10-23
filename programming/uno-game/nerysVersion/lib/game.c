@@ -1,0 +1,295 @@
+#include"principal.h"
+
+void game(Game* jogo){
+   float y = 0;
+   int i = -10;
+   int numCarta = 0;
+   int inicioCards;
+   int maxMenu = displayWidht*0.22;
+   bool  gamePaused = false,
+         menuResumeMenu = true,
+         leave = false;
+
+   bool  luan = false,
+         carlos = false,
+         maxwell = false,
+         jorge = false,
+         leonildo = false,
+         playerONE = false;
+
+   while(!leave){
+      if(getSizePack(getBaralho(jogo)) == 0) {
+          pushMainPack(getBaralho(jogo), getDescarte(jogo));
+      }
+      inicioCards = playerCards(getJogador(getJogadores(jogo), 1));
+      ALLEGRO_EVENT ev;
+      al_wait_for_event(event_queue, &ev);
+
+      if(ev.type == ALLEGRO_EVENT_TIMER) {
+         redraw = true;
+      }
+      else if(ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+         break;
+      }
+      else if(ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {   /// MOUSE
+         if(getMouseX() >= (displayWidht*0.025622) && getMouseY() >= (displayHeigh*0.8723)
+                  && getMouseX() <= (displayWidht*0.157393) && getMouseY() <= (displayHeigh*0.9505)
+                  && !gamePaused){
+            gamePaused = true;
+            i *= -1;
+         }
+         else if(getMouseX() >= inicioCards && getMouseX() <= (inicioCards+126+40*(getQTCards(getJogadorPrincipal(getJogadores(jogo)))-1))
+                 && getMouseY() >= 550 && getMouseY() <= 550+204){
+            printf("\a");
+            //printf("%d\n\n", ((getMouseX()-244)/40)+1);
+            if(((getMouseX()-inicioCards)/40)+1 >= getQTCards(getJogadorPrincipal(getJogadores(jogo)))){
+                numCarta = getQTCards(getJogadorPrincipal(getJogadores(jogo)));
+            }
+            else{
+                numCarta = ((getMouseX()-inicioCards)/40)+1;
+            }
+         }
+         else if(getMouseX() >= 0.5 && getMouseY() >= (displayHeigh*0.1627)
+                  && getMouseX() <= (displayWidht*0.20) && getMouseY() <= (displayHeigh*0.2539)
+                  && y >= maxMenu && gamePaused){
+            menuResumeMenu = false;
+            i *= -1;
+         }
+         else if(getMouseX() >= 0.5 && getMouseY() >= (displayHeigh*0.2929)
+                  && getMouseX() <= (displayWidht*0.20) && getMouseY() <= (displayHeigh*0.3841)
+                  && y >= maxMenu && gamePaused){
+            leave = true;
+            menuMainMenu = true;
+            return;
+         }
+         else if(getMouseX() >= 0.5 && getMouseY() >= (displayHeigh*0.4166)
+                  && getMouseX() <= (displayWidht*0.20) && getMouseY() <= (displayHeigh*0.5143)
+                  && y >= maxMenu && gamePaused){
+            //
+         }
+         else if(getMouseX() >= 0.5 && getMouseY() >= (displayHeigh*0.5468)
+                  && getMouseX() <= (displayWidht*0.20) && getMouseY() <= (displayHeigh*0.6445)
+                  && y >= maxMenu && gamePaused){
+            //
+         }
+         else if(getMouseX() >= 0.5 && getMouseY() >= (displayHeigh*0.6770)
+             && getMouseX() <= (displayWidht*0.20) && getMouseY() <= (displayHeigh*0.7747)
+                  && y >= maxMenu && gamePaused){
+            leave = true;
+            doexit = true;
+            //return 0;
+         }
+         else if (getMouseX() >= 797 && getMouseY() >= 369
+                    && getMouseX() <= 926 && getMouseY() <= 414
+                    && playerONE && numCarta != 0) {
+            char symbol, color;
+            Card* cartas = getPlayerCards(getJogadores(jogo));
+            for(i = 1;cartas!=NULL; cartas = getNextCard(cartas), i++){
+                if(i == numCarta){
+                    symbol = peekSymbol(cartas);
+                    color = peekColor(cartas);
+                }
+            }
+            if(getColorTop(jogo) == color || getSymbolTop(jogo) == symbol || color == 'D'){
+                descartar(jogo, symbol, color);
+                while(!isEmptyQueue(eventsQueue)){
+                    runEvent(removeEvent(eventsQueue),jogo);
+                }
+
+            }
+            free(cartas);
+         }
+         else if(getMouseX() >= (displayWidht*0.387) && getMouseY() >= (displayHeigh*0.410)
+                 && getMouseX() <= (displayWidht*0.387)+126 && getMouseY() <= (displayHeigh*0.410)+195
+                 && playerONE){
+             pushPlayer(getBaralho(jogo), getJogadores(jogo));
+         }
+         else{
+            numCarta = 0;
+         }
+      }
+      else if(ev.type == ALLEGRO_EVENT_MOUSE_AXES || ev.type == ALLEGRO_EVENT_MOUSE_ENTER_DISPLAY) {
+         posMouse = pushMouse(posMouse, ev.mouse.x, ev.mouse.y);
+      }
+      else if(ev.type == ALLEGRO_EVENT_KEY_DOWN) {
+         switch(ev.keyboard.keycode) {
+            case ALLEGRO_KEY_UP:
+               key[KEY_UP] = true;
+               break;
+            case ALLEGRO_KEY_DOWN:
+               key[KEY_DOWN] = true;
+               break;
+            case ALLEGRO_KEY_LEFT:
+               key[KEY_LEFT] = true;
+               break;
+            case ALLEGRO_KEY_RIGHT:
+               key[KEY_RIGHT] = true;
+               break;
+         }
+      }
+      else if(ev.type == ALLEGRO_EVENT_KEY_UP) {
+         switch(ev.keyboard.keycode) {
+            case ALLEGRO_KEY_UP:
+               key[KEY_UP] = false;
+               break;
+            case ALLEGRO_KEY_DOWN:
+               key[KEY_DOWN] = false;
+               break;
+            case ALLEGRO_KEY_LEFT:
+               key[KEY_LEFT] = false;
+               break;
+            case ALLEGRO_KEY_RIGHT:
+               key[KEY_RIGHT] = false;
+               break;
+            case ALLEGRO_KEY_ESCAPE:
+               if(!gamePaused){
+                  gamePaused = true;
+               }else{
+                  menuResumeMenu = false;
+               }
+               i *= -1;
+         }
+      }
+
+      if(y >= maxMenu && gamePaused){
+         mouseHover(0.5, (displayHeigh*0.16),
+                     (displayWidht*0.20), (displayHeigh*0.25), &colorResumeMenu, !menuResumeMenu);
+         mouseHover(0.5, (displayHeigh*0.29),
+                     (displayWidht*0.20), (displayHeigh*0.38), &colorMainMenu, menuMainMenu);
+         mouseHover(0.5, (displayHeigh*0.41),
+                     (displayWidht*0.20), (displayHeigh*0.51), &colormenuHelp, menuHelp);
+         mouseHover(0.5, (displayHeigh*0.54),
+                     (displayWidht*0.20), (displayHeigh*0.64), &colorMenuOpcoes, menuOpcoes);
+         mouseHover(0.5, (displayHeigh*0.67),
+                     (displayWidht*0.20), (displayHeigh*0.77), &colorMenuSair, 0);
+      }else{
+         mouseHover((displayWidht*0.0283), (displayHeigh*0.8723),
+                     (displayWidht*0.1537), (displayHeigh*0.9505),
+                      &colorMenuOpcoes, menuOpcoes);
+      }
+      switch (getPlayerId(getJogadores(jogo))){
+         case 1:
+                luan = false;
+                carlos = false;
+                maxwell = false;
+                jorge = false;
+                leonildo = false;
+                playerONE = true;
+            break;
+         case 2:
+                luan = true;
+                carlos = false;
+                maxwell = false;
+                jorge = false;
+                leonildo = false;
+                playerONE = false;
+
+            break;
+         case 3:
+                luan = false;
+                carlos = true;
+                maxwell = false;
+                jorge = false;
+                leonildo = false;
+                playerONE = false;
+            break;
+         case 4:
+                luan = false;
+                carlos = false;
+                maxwell = true;
+                jorge = false;
+                leonildo = false;
+                playerONE = false;
+            break;
+         case 5:
+                luan = false;
+                carlos = false;
+                maxwell = false;
+                jorge = true;
+                leonildo = false;
+                playerONE = false;
+            break;
+         case 6:
+                luan = false;
+                carlos = false;
+                maxwell = false;
+                jorge = false;
+                leonildo = true;
+                playerONE = false;
+            break;
+
+      }
+      if(redraw && al_is_event_queue_empty(event_queue)) {
+         redraw = false;
+         al_clear_to_color(colorBlack);
+
+         al_draw_bitmap(piso,0,0,0);
+
+         drawPlayers(carlos,jorge,leonildo,luan,maxwell,playerONE);
+
+         al_draw_bitmap(table, (displayWidht/2)-307.5, (displayHeigh/2)-163.5,0);
+         al_draw_bitmap(imageQnt, (displayWidht/2)-307.5-165-19.5, (displayHeigh/2)-163.5+169,0);
+         al_draw_bitmap(imageQnt, (displayWidht/2)-307.5-20.5, (displayHeigh/2)-163.5-153+169,0);
+         al_draw_bitmap(imageQnt, (displayWidht/2)-85.5-16.5, (displayHeigh/2)-163.5-184+169,0);
+         al_draw_bitmap(imageQnt, (displayWidht/2)+307.5-178-13, (displayHeigh/2)-163.5-153+169,0);
+         al_draw_bitmap(imageQnt, (displayWidht/2)+307.5-20-16.5, (displayHeigh/2)-163.5+169,0);
+
+         drawBaralho();
+         drawDescarte(getIdTop(jogo));
+
+         drawButton(812, 392,
+                        (displayHeigh*0.019531), (displayHeigh*0.034062)-2, (displayWidht*0.109809)-50,colorWhite);
+            drawButton(812, 392,
+                        (displayHeigh*0.016927), (displayHeigh*0.030156)-2, (displayWidht*0.108345)-50,colorYellow);
+            al_draw_text(font, colorBlack, 812,
+                          377, ALLEGRO_ALIGN_LEFT, "Descartar");
+
+         al_draw_text(fontPlayers, colorDarkRed, (displayWidht/2)-307.5-165+82.5,
+                 (displayHeigh/2)-163.5-16, ALLEGRO_ALIGN_CENTRE, "Leonildo");
+         al_draw_textf(font, colorWhite, 289, 415, ALLEGRO_ALIGN_CENTRE, "%2.d", getQTCards(getJogador(getJogadores(jogo), 6)));
+         al_draw_text(fontPlayers, colorDarkRed, (displayWidht/2)-307.5+81.5,
+                 (displayHeigh/2)-163.5-153-16, ALLEGRO_ALIGN_CENTRE, "Jorge");
+                 al_draw_textf(font, colorWhite, 452, 264, ALLEGRO_ALIGN_CENTRE, "%2.d", getQTCards(getJogador(getJogadores(jogo), 5)));
+         al_draw_text(fontPlayers, colorDarkRed, (displayWidht/2),
+                 (displayHeigh/2)-163.5-184-16, ALLEGRO_ALIGN_CENTRE, "Maxwell");
+                 al_draw_textf(font, colorWhite, 678, 230, ALLEGRO_ALIGN_CENTRE, "%2.d", getQTCards(getJogador(getJogadores(jogo), 4)));
+         al_draw_text(fontPlayers, colorDarkRed, (displayWidht/2)+307.5-178+89,
+                 (displayHeigh/2)-163.5-153-16, ALLEGRO_ALIGN_CENTRE, "Nery");
+                 al_draw_textf(font, colorWhite, 895, 264, ALLEGRO_ALIGN_CENTRE, "%2.d", getQTCards(getJogador(getJogadores(jogo), 3)));
+         al_draw_text(fontPlayers, colorDarkRed, (displayWidht/2)+307.5+67.5,
+                 (displayHeigh/2)-163.5-16, ALLEGRO_ALIGN_CENTRE, "Luan");
+                 al_draw_textf(font, colorWhite, 1050, 415, ALLEGRO_ALIGN_CENTRE, "%2.d", getQTCards(getJogador(getJogadores(jogo), 2)));
+
+         al_draw_bitmap(imageSentido, (displayWidht/2)-275, (displayHeigh/2)-70, getSentido(jogo));
+
+         al_draw_textf(fontMenu, colorWhite, 5.0, 10.0,ALLEGRO_ALIGN_LEFT,
+               "Mouse(x):%d - Mouse(y):%d", getMouseX(posMouse), getMouseY(posMouse));
+
+         al_draw_textf(fontMenu, colorWhite, 805.0, 10.0,ALLEGRO_ALIGN_LEFT,
+                        "Heigh:%d - Widht:%d", displayHeigh, displayWidht);
+
+         drawPlayerCards(getJogador(getJogadores(jogo), 1), numCarta, inicioCards);
+
+         if(gamePaused){
+            if(y>=maxMenu && i>0){
+               //
+            }else if(y<=0 && i<0){
+               gamePaused = false;
+               menuResumeMenu = true;
+            }else{
+               y+=i;
+            }
+            optionMenu(y, maxMenu);
+         }else{
+            drawButton((displayWidht*0.036603), (displayHeigh*0.911458),
+                        (displayHeigh*0.019531), (displayHeigh*0.034062), (displayWidht*0.109809),colorRed);
+            drawButton((displayWidht*0.037335), (displayHeigh*0.911458),
+                        (displayHeigh*0.016927), (displayHeigh*0.030156), (displayWidht*0.108345),colorDarkRed);
+            al_draw_text(fontMenu, colorMenuOpcoes, (displayWidht*0.043923),
+                          (displayHeigh*0.898437), ALLEGRO_ALIGN_LEFT, "Opcões");
+         }
+
+         al_flip_display();
+      }
+   }
+}

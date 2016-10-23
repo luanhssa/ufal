@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="GraphicalInterface" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin\Debug\GraphicalInterface" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin\Release\GraphicalInterface" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Linker>
+			<Add library="gdi32" />
+			<Add library="user32" />
+			<Add library="kernel32" />
+		</Linker>
+		<Unit filename="lib\action.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\action.h" />
+		<Unit filename="lib\baralho.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\baralho.h" />
+		<Unit filename="lib\cartas.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\cartas.h" />
+		<Unit filename="lib\game.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\game.h" />
+		<Unit filename="lib\graphics.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\graphics.h" />
+		<Unit filename="lib\iniciaAllegro.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\iniciaAllegro.h" />
+		<Unit filename="lib\jogador.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\jogador.h" />
+		<Unit filename="lib\jogo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\jogo.h" />
+		<Unit filename="lib\principal.h" />
+		<Unit filename="lib\textMenu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\textMenu.h" />
+		<Unit filename="menu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="text\cartas.txt" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

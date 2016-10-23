@@ -1,0 +1,427 @@
+# depslib dependency file v1.0
+1340042509 source:c:\users\luan\workspace\graphicalinterface\menu.c
+
+1339854709 c:\users\luan\workspace\graphicalinterface\lib\graphics.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<math.h>
+	<stddef.h>
+	<time.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	"iniciaAllegro.h"
+	"game.h"
+	"textMenu.h"
+
+1336049070 c:\users\luan\workspace\graphicalinterface\lib\iniciaallegro.h
+
+1343093283 source:c:\users\luan\workspace\graphicalinterface\lib\iniciaallegro.c
+
+1340633833 source:c:\users\luan\workspace\graphicalinterface\lib\graphics.c
+
+1335792553 c:\users\luan\workspace\graphicalinterface\lib\game.h
+
+1340633740 source:c:\users\luan\workspace\graphicalinterface\lib\game.c
+
+1336077357 c:\users\luan\workspace\graphicalinterface\lib\language.h
+
+1336092168 c:\users\luan\workspace\graphicalinterface\lib\textmenu.h
+
+1343094301 source:c:\users\luan\workspace\graphicalinterface\lib\textmenu.c
+
+1350588517 source:c:\users\luan\google drive\workspace\graphicalinterface\lib\graphics.c
+	"principal.h"
+
+1350027681 source:c:\users\luan\google drive\workspace\graphicalinterface\lib\iniciaallegro.c
+	"principal.h"
+
+1350031538 source:c:\users\luan\google drive\workspace\graphicalinterface\lib\textmenu.c
+	"principal.h"
+
+1350015406 source:c:\users\luan\google drive\workspace\graphicalinterface\menu.c
+	"lib/principal.h"
+
+1350591706 source:c:\users\luan\google drive\workspace\graphicalinterface\lib\game.c
+	"principal.h"
+
+1350030442 c:\users\luan\google drive\workspace\graphicalinterface\lib\graphics.h
+
+1348939814 c:\users\luan\google drive\workspace\graphicalinterface\lib\iniciaallegro.h
+
+1350580934 c:\users\luan\google drive\workspace\graphicalinterface\lib\game.h
+
+1348939826 c:\users\luan\google drive\workspace\graphicalinterface\lib\textmenu.h
+
+1350027613 c:\users\luan\google drive\workspace\graphicalinterface\lib\principal.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<math.h>
+	<stddef.h>
+	<time.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	"iniciaAllegro.h"
+	"game.h"
+	"textMenu.h"
+	"baralho.h"
+	"cartas.h"
+	"jogador.h"
+	"jogo.h"
+	"graphics.h"
+
+1350586365 c:\users\luan\google drive\workspace\graphicalinterface\lib\cartas.h
+
+1350584550 c:\users\luan\google drive\workspace\graphicalinterface\lib\jogador.h
+
+1350592904 c:\users\luan\google drive\workspace\graphicalinterface\lib\baralho.h
+
+1350587263 c:\users\luan\google drive\workspace\graphicalinterface\lib\jogo.h
+
+1350592853 source:c:\users\luan\google drive\workspace\graphicalinterface\lib\baralho.c
+	"principal.h"
+
+1350589384 source:c:\users\luan\google drive\workspace\graphicalinterface\lib\cartas.c
+	"principal.h"
+
+1350588865 source:c:\users\luan\google drive\workspace\graphicalinterface\lib\jogador.c
+	"principal.h"
+
+1350592944 source:c:\users\luan\google drive\workspace\graphicalinterface\lib\jogo.c
+	"principal.h"
+
+1350592853 source:c:\users\administrado\desktop\jogo0.85\lib\baralho.c
+	"principal.h"
+
+1350733832 c:\users\administrado\desktop\jogo0.85\lib\principal.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<math.h>
+	<stddef.h>
+	<time.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	"iniciaAllegro.h"
+	"game.h"
+	"textMenu.h"
+	"baralho.h"
+	"cartas.h"
+	"jogador.h"
+	"jogo.h"
+	"graphics.h"
+	"action.h"
+
+1348939814 c:\users\administrado\desktop\jogo0.85\lib\iniciaallegro.h
+
+1350580934 c:\users\administrado\desktop\jogo0.85\lib\game.h
+
+1348939826 c:\users\administrado\desktop\jogo0.85\lib\textmenu.h
+
+1350592904 c:\users\administrado\desktop\jogo0.85\lib\baralho.h
+
+1350736219 c:\users\administrado\desktop\jogo0.85\lib\cartas.h
+
+1350584550 c:\users\administrado\desktop\jogo0.85\lib\jogador.h
+
+1350587263 c:\users\administrado\desktop\jogo0.85\lib\jogo.h
+
+1350030442 c:\users\administrado\desktop\jogo0.85\lib\graphics.h
+
+1350736187 c:\users\administrado\desktop\jogo0.85\lib\action.h
+
+1350589384 source:c:\users\administrado\desktop\jogo0.85\lib\cartas.c
+	"principal.h"
+
+1350588517 source:c:\users\administrado\desktop\jogo0.85\lib\graphics.c
+	"principal.h"
+
+1350734748 source:c:\users\administrado\desktop\jogo0.85\lib\iniciaallegro.c
+	"principal.h"
+
+1350735226 source:c:\users\administrado\desktop\jogo0.85\lib\jogador.c
+	"principal.h"
+
+1350592944 source:c:\users\administrado\desktop\jogo0.85\lib\jogo.c
+	"principal.h"
+
+1350031538 source:c:\users\administrado\desktop\jogo0.85\lib\textmenu.c
+	"principal.h"
+
+1350015406 source:c:\users\administrado\desktop\jogo0.85\menu.c
+	"lib/principal.h"
+
+1350736247 source:c:\users\administrado\desktop\jogo0.85\lib\action.c
+	"principal.h"
+
+1350735805 source:c:\users\administrado\desktop\jogo0.85\lib\game.c
+	"principal.h"
+
+1350592853 source:c:\users\luan\desktop\nerysversion\lib\baralho.c
+	"principal.h"
+
+1350759914 c:\users\luan\desktop\nerysversion\lib\principal.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<math.h>
+	<stddef.h>
+	<time.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	"iniciaAllegro.h"
+	"game.h"
+	"textMenu.h"
+	"baralho.h"
+	"cartas.h"
+	"jogador.h"
+	"jogo.h"
+	"graphics.h"
+	"action.h"
+	"ai.h"
+
+1348939814 c:\users\luan\desktop\nerysversion\lib\iniciaallegro.h
+
+1350580934 c:\users\luan\desktop\nerysversion\lib\game.h
+
+1348939826 c:\users\luan\desktop\nerysversion\lib\textmenu.h
+
+1350592904 c:\users\luan\desktop\nerysversion\lib\baralho.h
+
+1350736219 c:\users\luan\desktop\nerysversion\lib\cartas.h
+
+1350584550 c:\users\luan\desktop\nerysversion\lib\jogador.h
+
+1350744317 c:\users\luan\desktop\nerysversion\lib\jogo.h
+
+1350744280 c:\users\luan\desktop\nerysversion\lib\graphics.h
+
+1350743516 c:\users\luan\desktop\nerysversion\lib\action.h
+
+1350764135 source:c:\users\luan\desktop\nerysversion\lib\cartas.c
+	"principal.h"
+
+1350757803 source:c:\users\luan\desktop\nerysversion\lib\graphics.c
+	"principal.h"
+
+1350765063 source:c:\users\luan\desktop\nerysversion\lib\jogador.c
+	"principal.h"
+
+1350031538 source:c:\users\luan\desktop\nerysversion\lib\textmenu.c
+	"principal.h"
+
+1350015406 source:c:\users\luan\desktop\nerysversion\menu.c
+	"lib/principal.h"
+
+1350759636 source:c:\users\luan\desktop\nerysversion\lib\action.c
+	"principal.h"
+
+1350765036 source:c:\users\luan\desktop\nerysversion\lib\game.c
+	"principal.h"
+
+1350764857 source:c:\users\luan\desktop\nerysversion\lib\iniciaallegro.c
+	"principal.h"
+
+1350761158 source:c:\users\luan\desktop\nerysversion\lib\jogo.c
+	"principal.h"
+
+1350760675 c:\users\luan\desktop\nerysversion\lib\ai.h
+
+1350762894 source:c:\users\luan\desktop\nerysversion\lib\ai.c
+	"principal.h"
+
+1352759580 source:c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\action.c
+	"principal.h"
+
+1352759585 c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\principal.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<math.h>
+	<stddef.h>
+	<time.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	"iniciaAllegro.h"
+	"game.h"
+	"textMenu.h"
+	"baralho.h"
+	"cartas.h"
+	"jogador.h"
+	"jogo.h"
+	"graphics.h"
+	"action.h"
+	"ai.h"
+
+1348943414 c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\iniciaallegro.h
+
+1352759577 c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\game.h
+
+1352759578 c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\textmenu.h
+
+1352759580 c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\baralho.h
+
+1350739819 c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\cartas.h
+
+1352759581 c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\jogador.h
+
+1352759579 c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\jogo.h
+
+1352759580 c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\graphics.h
+
+1352759578 c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\action.h
+
+1352759577 c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\ai.h
+
+1352759581 source:c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\ai.c
+	"principal.h"
+
+1350596453 source:c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\baralho.c
+	"principal.h"
+
+1352759581 source:c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\cartas.c
+	"principal.h"
+
+1350769379 source:c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\game.c
+	"principal.h"
+
+1352759585 source:c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\jogador.c
+	"principal.h"
+
+1350035138 source:c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\textmenu.c
+	"principal.h"
+
+1352759585 source:c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\graphics.c
+	"principal.h"
+
+1352759582 source:c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\jogo.c
+	"principal.h"
+
+1352759585 source:c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\menu.c
+	"lib/principal.h"
+
+1359662861 source:c:\users\luan\dropbox\ufal\projeto p2\jogo 1.0\lib\iniciaallegro.c
+	"principal.h"
+
+1352755980 source:c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\action.c
+	"principal.h"
+
+1352755985 c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\principal.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<math.h>
+	<stddef.h>
+	<time.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	"iniciaAllegro.h"
+	"game.h"
+	"textMenu.h"
+	"baralho.h"
+	"cartas.h"
+	"jogador.h"
+	"jogo.h"
+	"graphics.h"
+	"action.h"
+	"ai.h"
+
+1348939814 c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\iniciaallegro.h
+
+1352755977 c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\game.h
+
+1352755978 c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\textmenu.h
+
+1352755980 c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\baralho.h
+
+1350736219 c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\cartas.h
+
+1352755981 c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\jogador.h
+
+1352755979 c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\jogo.h
+
+1352755980 c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\graphics.h
+
+1352755978 c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\action.h
+
+1352755977 c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\ai.h
+
+1352755981 source:c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\ai.c
+	"principal.h"
+
+1350592853 source:c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\baralho.c
+	"principal.h"
+
+1352755981 source:c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\cartas.c
+	"principal.h"
+
+1350765779 source:c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\game.c
+	"principal.h"
+
+1352755985 source:c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\graphics.c
+	"principal.h"
+
+1359659261 source:c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\iniciaallegro.c
+	"principal.h"
+
+1352755985 source:c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\jogador.c
+	"principal.h"
+
+1352755982 source:c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\jogo.c
+	"principal.h"
+
+1350031538 source:c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\lib\textmenu.c
+	"principal.h"
+
+1371608132 source:c:\users\luan\dropbox\programas\projetos\p2 - uno\jogo 1.0\menu.c
+	"lib/principal.h"
+

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="lib\action.c" open="1" top="1" tabpos="0">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="lib\baralho.c" open="0" top="0" tabpos="7">
+		<Cursor position="2456" topLine="81" />
+	</File>
+	<File name="lib\baralho.h" open="0" top="0" tabpos="10">
+		<Cursor position="1534" topLine="45" />
+	</File>
+	<File name="lib\cartas.c" open="0" top="0" tabpos="6">
+		<Cursor position="1234" topLine="36" />
+	</File>
+	<File name="lib\cartas.h" open="0" top="0" tabpos="16">
+		<Cursor position="2578" topLine="81" />
+	</File>
+	<File name="lib\game.c" open="1" top="0" tabpos="2">
+		<Cursor position="3632" topLine="80" />
+	</File>
+	<File name="lib\game.h" open="0" top="0" tabpos="12">
+		<Cursor position="64" topLine="0" />
+	</File>
+	<File name="lib\graphics.c" open="0" top="0" tabpos="2">
+		<Cursor position="2813" topLine="54" />
+	</File>
+	<File name="lib\graphics.h" open="0" top="0" tabpos="14">
+		<Cursor position="1427" topLine="33" />
+	</File>
+	<File name="lib\iniciaAllegro.c" open="0" top="0" tabpos="4">
+		<Cursor position="2052" topLine="72" />
+	</File>
+	<File name="lib\iniciaAllegro.h" open="0" top="0" tabpos="15">
+		<Cursor position="330" topLine="0" />
+	</File>
+	<File name="lib\jogador.c" open="1" top="0" tabpos="4">
+		<Cursor position="2212" topLine="0" />
+	</File>
+	<File name="lib\jogador.h" open="0" top="0" tabpos="11">
+		<Cursor position="2061" topLine="71" />
+	</File>
+	<File name="lib\jogo.c" open="1" top="0" tabpos="3">
+		<Cursor position="1365" topLine="49" />
+	</File>
+	<File name="lib\jogo.h" open="0" top="0" tabpos="9">
+		<Cursor position="705" topLine="23" />
+	</File>
+	<File name="lib\principal.h" open="1" top="0" tabpos="13">
+		<Cursor position="3640" topLine="113" />
+	</File>
+	<File name="lib\textMenu.c" open="0" top="0" tabpos="5">
+		<Cursor position="2597" topLine="46" />
+	</File>
+	<File name="lib\textMenu.h" open="0" top="0" tabpos="17">
+		<Cursor position="192" topLine="0" />
+	</File>
+	<File name="menu.c" open="1" top="0" tabpos="1">
+		<Cursor position="4867" topLine="129" />
+	</File>
+	<File name="text\cartas.txt" open="0" top="0" tabpos="0">
+		<Cursor position="51" topLine="20" />
+	</File>
+</CodeBlocks_layout_file>

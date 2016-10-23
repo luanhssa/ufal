@@ -1,0 +1,73 @@
+#include "principal.h"
+
+struct _event_{
+    char action;
+    Event* next;
+};
+
+struct _queue_{ // Queue
+    Event *first;
+    Event *last;
+};
+
+Queue* createQueueAction(){
+    Queue *newQueue = (Queue*)malloc(sizeof(Queue));
+    newQueue->first = newQueue->last = NULL;
+    return newQueue;
+}
+
+Event* creatEvent(char action){
+    Event* newEvent = (Event*)malloc(sizeof(Event));
+    newEvent->next = NULL;
+    newEvent->action = action;
+    return newEvent;
+}
+int isEmptyQueue(Queue* queue){
+    return (queue->first==NULL);
+}
+
+void insertEvent(Event* event,Queue* queue){
+    if(!isEmptyQueue(queue)){
+        queue->last->next = event;
+    }
+    else {
+        queue->first = event;
+    }
+    queue->last = event;
+}
+
+Event* removeEvent(Queue* queue){
+    Event* event;
+    event = queue->first;
+    queue->first = queue->first->next;
+    event->next = NULL;
+    return event;
+}
+
+void runEvent(Event* event,Game* jogo){
+    int i;
+    switch(event->action){
+        case nextPlayerAction:
+            nextPlayer(jogo);
+        break;
+        case puxar2Action:
+            for(i=0;i<2;i++){
+                pushPlayer(getBaralho(jogo), getJogadores(jogo));
+            }
+        break;
+        case puxar4Action:
+            for(i=0;i<4;i++){
+                pushPlayer(getBaralho(jogo), getJogadores(jogo));
+            }
+        break;
+        case pegarCorAction:
+            if(getPlayerId(getJogadores(jogo)) == 1){
+                mudarCor(jogo);
+            }
+            //changeColor = true;
+        break;
+        case inverterAction:
+            changeSentido(jogo);
+        break;
+    }
+}
