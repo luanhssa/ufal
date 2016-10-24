@@ -1,0 +1,6 @@
+
+void kmain() {
+
+	hang();
+
+}
